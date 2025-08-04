@@ -1,43 +1,318 @@
-const { Component } = require('inferno');
-const classname = require('hexo-component-inferno/lib/util/classname');
-const Head = require('./common/head');
-const Navbar = require('./common/navbar');
-const Widgets = require('./common/widgets');
-const Footer = require('./common/footer');
-const Scripts = require('./common/scripts');
-const Search = require('./common/search');
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>标签: 技术 - Attenna的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Attenna的博客"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Attenna的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="一个热爱技术的学生的个人博客"><meta property="og:type" content="blog"><meta property="og:title" content="Attenna&#039;s Blog Attenna的博客"><meta property="og:url" content="https://attenna.github.io/"><meta property="og:site_name" content="Attenna的博客"><meta property="og:description" content="一个热爱技术的学生的个人博客"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://attenna.github.io/img/og_image.png"><meta property="article:author" content="Attenna"><meta property="article:tag" content="技术,编程,学习,生活"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://attenna.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://Attenna.github.io"},"headline":"Attenna的博客","image":["https://attenna.github.io/img/og_image.png"],"author":{"@type":"Person","name":"Attenna"},"publisher":{"@type":"Organization","name":"Attenna的博客","logo":{"@type":"ImageObject","url":"https://attenna.github.io/icon.jpg"}},"description":"一个热爱技术的学生的个人博客"}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-module.exports = class extends Component {
-    render() {
-        const { site, config, page, helper, body } = this.props;
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-        const language = page.lang || page.language || config.language;
-        const columnCount = Widgets.getColumnCount(config.widgets, config, page);
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-        return <html lang={language ? language.substr(0, 2) : ''}>
-            <Head site={site} config={config} helper={helper} page={page} />
-            <body class={`is-${columnCount}-column`}>
-                <Navbar config={config} helper={helper} page={page} />
-                <section class="section">
-                    <div class="container">
-                        <div class="columns">
-                            <div class={classname({
-                                column: true,
-                                'order-2': true,
-                                'column-main': true,
-                                'is-12': columnCount === 1,
-                                'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,
-                                'is-8-tablet is-8-desktop is-6-widescreen': columnCount === 3
-                            })} dangerouslySetInnerHTML={{ __html: body }}></div>
-                            <Widgets site={site} config={config} helper={helper} page={page} position={'left'} />
-                            <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />
-                        </div>
-                    </div>
-                </section>
-                <Footer config={config} helper={helper} />
-                <Scripts site={site} config={config} helper={helper} page={page} />
-                <Search config={config} helper={helper} />
-            </body>
-        </html>;
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/icon.jpg" alt="Attenna的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">技术</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-08-01T03:44:29.000Z" title="2025/8/1 11:44:29">2025-08-01</time>发表</span><span class="level-item"><time dateTime="2025-08-04T02:33:34.737Z" title="2025/8/4 10:33:34">2025-08-04</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></span><span class="level-item">11 分钟读完 (大约1681个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/">翼掌柜图像编辑页面的思路</a></p><div class="content"><p>本文来自本人的实习记录。</p>
+<h3 id="需求分析："><a href="#需求分析：" class="headerlink" title="需求分析："></a>需求分析：</h3><p>我们能产生的图像需要至少达到以下程度，目前来说，已经可以生成ai图片，嵌入文字，叠放图片。  </p>
+<p><img src="https://attenna8.wordpress.com/wp-content/uploads/2025/08/image.png?w=493"></p>
+<p>软件已经实现了上传用户自定义素材，和增加文字描述的基础功能  </p>
+<p><img src="https://attenna8.wordpress.com/wp-content/uploads/2025/08/image-1.png?w=472"></p>
+<p>但是，目前来说，文字没法修改大小，字重，字体，有时候ai生成的构图并不合理，需要调节（如例图，例图的洗衣机被放置在了左侧）</p>
+<p>因此，我们对于字体嵌入，需要添加大小，字重，字体选项；对于ai生成的构图，需要调用扩图接口，擦除接口，改写接口（后两者是同一个接口）</p>
+<p>不过我不知道开发规范，所以就先瞎写了</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><h4 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h4><p>使用main.html作为主页面，主页面包括了子节点容器（godot的思想），底部栏容器，按钮。<br>使用main.js（反正是个什么后端语言）作为主界面的后端。它负责调用main.html引用了哪些子节点。</p>
+<h4 id="子节点"><a href="#子节点" class="headerlink" title="子节点"></a>子节点</h4><p>子节点实现子功能。</p>
+<h5 id="贴纸（stickers）（幻想中）"><a href="#贴纸（stickers）（幻想中）" class="headerlink" title="贴纸（stickers）（幻想中）"></a>贴纸（stickers）（幻想中）</h5><p>调用微信的表情包api（应该有的），然后如法炮制上传本地图片作为贴纸的代码就可以了。</p>
+<h5 id="上传本地图片作为贴纸（upload-logo）（已经实现）"><a href="#上传本地图片作为贴纸（upload-logo）（已经实现）" class="headerlink" title="上传本地图片作为贴纸（upload logo）（已经实现）"></a>上传本地图片作为贴纸（upload logo）（已经实现）</h5><p>上传本地图片作为贴纸，已经实现了。</p>
+<h5 id="嵌入文字（embedding-texts）（已经实现）"><a href="#嵌入文字（embedding-texts）（已经实现）" class="headerlink" title="嵌入文字（embedding texts）（已经实现）"></a>嵌入文字（embedding texts）（已经实现）</h5><p>嵌入文字也已经实现了。<br>生成一个矢量文本框，然后可以对矢量文本框进行旋转，移动，缩放，改色功能。</p>
+<h5 id="AI图像抹除（ai-eliminate）（幻想中）"><a href="#AI图像抹除（ai-eliminate）（幻想中）" class="headerlink" title="AI图像抹除（ai eliminate）（幻想中）"></a>AI图像抹除（ai eliminate）（幻想中）</h5><p>ai图像抹除已经基本实现了</p>
+<h5 id="AI局部重绘（ai-regenerate）（幻想中）"><a href="#AI局部重绘（ai-regenerate）（幻想中）" class="headerlink" title="AI局部重绘（ai regenerate）（幻想中）"></a>AI局部重绘（ai regenerate）（幻想中）</h5><p>ai局部重绘和ai图像抹除是同一个api，改改post请求参数就可以了</p>
+<h5 id="AI扩图（ai-expand）（幻想中）"><a href="#AI扩图（ai-expand）（幻想中）" class="headerlink" title="AI扩图（ai expand）（幻想中）"></a>AI扩图（ai expand）（幻想中）</h5><p>这个api不一样，修改构图还是比较重要，有必要做。</p>
+<h3 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h3><h4 id="怎么让html引用子节点（其它html）？"><a href="#怎么让html引用子节点（其它html）？" class="headerlink" title="怎么让html引用子节点（其它html）？"></a>怎么让html引用子节点（其它html）？</h4><blockquote>
+<p><em>ai回答的</em></p>
+</blockquote>
+<p>在 HTML 中直接引用其他 HTML 文件（子节点）可以通过以下几种常用方法实现：</p>
+<hr>
+<h5 id="方法-1：使用-（简单但内容隔离）"><a href="#方法-1：使用-（简单但内容隔离）" class="headerlink" title="方法 1：使用 &lt;iframe&gt;（简单但内容隔离）"></a>方法 1：使用 <code>&lt;iframe&gt;</code>（简单但内容隔离）</h5><iframe src="header.html" width="100%" height="100px"></iframe>
+
+<p><strong>特点</strong>：</p>
+<ul>
+<li>内容独立（样式&#x2F;脚本不共享）</li>
+<li>需手动调整高度（可用 JS 动态调整）</li>
+</ul>
+<hr>
+<h4 id="方法-2：JavaScript-动态加载（推荐）"><a href="#方法-2：JavaScript-动态加载（推荐）" class="headerlink" title="方法 2：JavaScript 动态加载（推荐）"></a>方法 2：JavaScript 动态加载（推荐）</h4><p>使用 <code>fetch()</code> 或 <code>XMLHttpRequest</code> 加载 HTML 内容并插入 DOM：</p>
+<div id="header-container"></div>
+
+<script>
+  // 动态加载 header.html
+  fetch('header.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('header-container').innerHTML = html;
+    })
+    .catch(error => console.error('加载失败:', error));
+</script>
+
+<hr>
+<h4 id="方法-3：HTML5-Web-Components（现代标准）"><a href="#方法-3：HTML5-Web-Components（现代标准）" class="headerlink" title="方法 3：HTML5 Web Components（现代标准）"></a>方法 3：HTML5 Web Components（现代标准）</h4><p>使用 <code>&lt;template&gt;</code> 和 <code>&lt;slot&gt;</code> 创建可重用组件：</p>
+<p><strong>1. 定义模板组件 (component.html)</strong></p>
+<template id="my-header">
+  <header>
+    <h1>网站标题</h1>
+    <slot name="subtitle">默认副标题</slot>
+  </header>
+</template>
+
+<p><strong>2. 在主文件中使用</strong></p>
+<!-- 引入组件 -->
+<link rel="import" href="component.html" id="header-template">
+
+<!-- 使用自定义元素 -->
+<my-header>
+  <span slot="subtitle">自定义副标题</span>
+</my-header>
+
+<script>
+  // 注册自定义组件
+  const template = document.querySelector('#header-template').import;
+  const headerTemplate = template.querySelector('#my-header');
+
+  customElements.define('my-header', class extends HTMLElement {
+    constructor() {
+      super();
+      const shadow = this.attachShadow({mode: 'open'});
+      shadow.appendChild(headerTemplate.content.cloneNode(true));
     }
-};
+  });
+</script>
+
+<hr>
+<h4 id="方法-4：服务端包含（需服务器支持）"><a href="#方法-4：服务端包含（需服务器支持）" class="headerlink" title="方法 4：服务端包含（需服务器支持）"></a>方法 4：服务端包含（需服务器支持）</h4><p><strong>Apache 示例 (启用 SSI)</strong>：</p>
+<!-- 直接引入子文件 -->
+<!--#include virtual="header.html" -->
+
+<p><strong>要求</strong>：</p>
+<ul>
+<li>文件需以 <code>.shtml</code> 结尾</li>
+<li>服务器开启 SSI 功能</li>
+</ul>
+<hr>
+<h4 id="方法-5：构建工具预处理（工程化方案）"><a href="#方法-5：构建工具预处理（工程化方案）" class="headerlink" title="方法 5：构建工具预处理（工程化方案）"></a>方法 5：构建工具预处理（工程化方案）</h4><p>使用 Webpack&#x2F;Parcel 等工具的 HTML 插件：</p>
+<p>&#x2F;&#x2F; Webpack 配置示例 (使用 html-webpack-plugin)<br>plugins: [<br>  new HtmlWebpackPlugin({<br>    template: “.&#x2F;src&#x2F;index.html”,<br>    chunks: [“main”]<br>  }),<br>  new HtmlWebpackPlugin({<br>    filename: “header.html”,<br>    template: “.&#x2F;src&#x2F;parts&#x2F;header.html”<br>  })<br>]</p>
+<hr>
+<h4 id="⚠️-注意事项"><a href="#⚠️-注意事项" class="headerlink" title="⚠️ 注意事项"></a>⚠️ 注意事项</h4><ol>
+<li><strong>跨域问题</strong>：动态加载时需确保同源（或配置 CORS）</li>
+<li><strong>SEO 影响</strong>：JS 动态加载的内容可能不被搜索引擎索引</li>
+<li><strong>性能</strong>：小文件推荐内联，大文件考虑缓存</li>
+<li><strong>框架方案</strong>：</li>
+</ol>
+<ul>
+<li>React&#x2F;Vue&#x2F;Angular 有专用组件系统</li>
+<li>PHP&#x2F;JSP 等后端语言原生支持 <code>include()</code></li>
+</ul>
+<hr>
+<h4 id="示例目录结构"><a href="#示例目录结构" class="headerlink" title="示例目录结构"></a>示例目录结构</h4><p>project&#x2F;<br>├── index.html<br>├── components&#x2F;<br>│   ├── header.html<br>│   └── footer.html<br>└── scripts&#x2F;<br>    └── load-components.js</p>
+<p>根据项目需求选择最适合的方案，小型项目推荐 <strong>JS 动态加载</strong>，大型应用推荐 <strong>Web Components</strong> 或 <strong>构建工具集成</strong>。</p>
+<h3 id="和后端怎么通信？"><a href="#和后端怎么通信？" class="headerlink" title="和后端怎么通信？"></a>和后端怎么通信？</h3><h3 id="后端脚本之间需要通信吗？"><a href="#后端脚本之间需要通信吗？" class="headerlink" title="后端脚本之间需要通信吗？"></a>后端脚本之间需要通信吗？</h3><p>大概是需要的。</p>
+<blockquote>
+<p>以下为ai生成</p>
+<h4 id="Python-Flask-后端脚本间通信实现方式"><a href="#Python-Flask-后端脚本间通信实现方式" class="headerlink" title="Python Flask 后端脚本间通信实现方式"></a>Python Flask 后端脚本间通信实现方式</h4></blockquote>
+<p>最简单的是使用数据库。<br>在 Flask 后端应用中，有几种常见的方式可以实现不同脚本或组件之间的通信：</p>
+<h5 id="1-模块导入与函数调用"><a href="#1-模块导入与函数调用" class="headerlink" title="1. 模块导入与函数调用"></a>1. 模块导入与函数调用</h5><p>最简单直接的方式是通过 Python 的模块导入机制：</p>
+<p># script_a.py<br>def some_function():<br>    return “Hello from script A”</p>
+<h1 id="script-b-py"><a href="#script-b-py" class="headerlink" title="script_b.py"></a>script_b.py</h1><p>from script_a import some_function</p>
+<p>result &#x3D; some_function()</p>
+<h5 id="2-使用-Flask-的请求上下文"><a href="#2-使用-Flask-的请求上下文" class="headerlink" title="2. 使用 Flask 的请求上下文"></a>2. 使用 Flask 的请求上下文</h5><p>对于需要 HTTP 接口通信的情况：</p>
+<p># service_a.py<br>from flask import Flask<br>app &#x3D; Flask(__name__)</p>
+<p>@app.route(‘&#x2F;api’)<br>def api_endpoint():<br>    return {“message”: “Hello from Service A”}</p>
+<h1 id="service-b-py"><a href="#service-b-py" class="headerlink" title="service_b.py"></a>service_b.py</h1><p>import requests</p>
+<p>response &#x3D; requests.get(‘<a target="_blank" rel="noopener" href="http://localhost:5000/api">http://localhost:5000/api</a>‘)<br>print(response.json())</p>
+<h5 id="3-消息队列-RabbitMQ-Redis等"><a href="#3-消息队列-RabbitMQ-Redis等" class="headerlink" title="3. 消息队列 (RabbitMQ, Redis等)"></a>3. 消息队列 (RabbitMQ, Redis等)</h5><p>对于异步或解耦的通信：</p>
+<p># producer.py<br>import pika</p>
+<p>connection &#x3D; pika.BlockingConnection(pika.ConnectionParameters(‘localhost’))<br>channel &#x3D; connection.channel()<br>channel.queue_declare(queue&#x3D;’hello’)</p>
+<p>channel.basic_publish(exchange&#x3D;’’, routing_key&#x3D;’hello’, body&#x3D;’Hello from Producer!’)</p>
+<h1 id="consumer-py"><a href="#consumer-py" class="headerlink" title="consumer.py"></a>consumer.py</h1><p>import pika</p>
+<p>def callback(ch, method, properties, body):<br>    print(f”Received {body}”)</p>
+<p>connection &#x3D; pika.BlockingConnection(pika.ConnectionParameters(‘localhost’))<br>channel &#x3D; connection.channel()<br>channel.queue_declare(queue&#x3D;’hello’)<br>channel.basic_consume(queue&#x3D;’hello’, on_message_callback&#x3D;callback, auto_ack&#x3D;True)<br>channel.start_consuming()</p>
+<h5 id="4-使用数据库作为中介"><a href="#4-使用数据库作为中介" class="headerlink" title="4. 使用数据库作为中介"></a>4. 使用数据库作为中介</h5><p># writer.py<br>from flask_sqlalchemy import SQLAlchemy</p>
+<p>db &#x3D; SQLAlchemy()</p>
+<p>class Message(db.Model):<br>    id &#x3D; db.Column(db.Integer, primary_key&#x3D;True)<br>    content &#x3D; db.Column(db.String(200))</p>
+<h1 id="写入消息"><a href="#写入消息" class="headerlink" title="写入消息"></a>写入消息</h1><p>new_msg &#x3D; Message(content&#x3D;”Hello from Writer”)<br>db.session.add(new_msg)<br>db.session.commit()</p>
+<h1 id="reader-py"><a href="#reader-py" class="headerlink" title="reader.py"></a>reader.py</h1><p>from models import Message</p>
+<p>messages &#x3D; Message.query.all()<br>for msg in messages:<br>    print(msg.content)</p>
+<h5 id="5-使用-Python-内置队列"><a href="#5-使用-Python-内置队列" class="headerlink" title="5. 使用 Python 内置队列"></a>5. 使用 Python 内置队列</h5><p># shared_queue.py<br>from queue import Queue</p>
+<p>message_queue &#x3D; Queue()</p>
+<h1 id="producer-py"><a href="#producer-py" class="headerlink" title="producer.py"></a>producer.py</h1><p>from shared_queue import message_queue</p>
+<p>message_queue.put(“Message 1”)</p>
+<h1 id="consumer-py-1"><a href="#consumer-py-1" class="headerlink" title="consumer.py"></a>consumer.py</h1><p>from shared_queue import message_queue</p>
+<p>msg &#x3D; message_queue.get()<br>print(msg)</p>
+<h5 id="6-使用-Flask-的蓝图-Blueprint-组织代码"><a href="#6-使用-Flask-的蓝图-Blueprint-组织代码" class="headerlink" title="6. 使用 Flask 的蓝图(Blueprint)组织代码"></a>6. 使用 Flask 的蓝图(Blueprint)组织代码</h5><p>对于大型应用，可以使用蓝图组织不同模块：</p>
+<p># api&#x2F;__init__.py<br>from flask import Blueprint</p>
+<p>api &#x3D; Blueprint(‘api’, __name__)</p>
+<p>from . import routes</p>
+<h1 id="api-routes-py"><a href="#api-routes-py" class="headerlink" title="api&#x2F;routes.py"></a>api&#x2F;routes.py</h1><p>from . import api</p>
+<p>@api.route(‘&#x2F;endpoint’)<br>def endpoint():<br>    return {“status”: “success”}</p>
+<h5 id="选择哪种方式取决于具体需求："><a href="#选择哪种方式取决于具体需求：" class="headerlink" title="选择哪种方式取决于具体需求："></a>选择哪种方式取决于具体需求：</h5><ul>
+<li>简单同步通信：模块导入或函数调用</li>
+<li>需要 HTTP 接口：Flask 路由</li>
+<li>异步或解耦：消息队列</li>
+<li>数据持久化：数据库</li>
+<li>进程间通信：队列或消息代理</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T14:12:00.000Z" title="2025/7/1 22:12:00">2025-07-01</time>发表</span><span class="level-item"><time dateTime="2025-08-04T02:33:34.755Z" title="2025/8/4 10:33:34">2025-08-04</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a></span><span class="level-item">13 分钟读完 (大约1885个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2025/07/01/%E6%9F%90%E5%AD%A6%E9%95%BF%E7%9A%84%E8%AF%9D/">某学长的话</a></p><div class="content"><p>摘自2025-07-01，北京邮电大学国际学院新生群。是的，这个学长的ID就叫“某”</p>
+<hr>
+<p>前情提要：有人转发了不知道具体时间的一个，“战邮家长”的抽象聊天记录。大家正在为这个聊天记录疑惑的时候，某学长发表了看法。</p>
+<hr>
+<p>400多万RMB，那就是美元60万</p>
+<p>那不用40岁，跟我一届的比较卷的人能达到</p>
+<p>图片已过期</p>
+<p>夺少</p>
+<p>当年就是这样子的，我们一起毕业，我在国内拿20万人民币，他们在美国拿20万美元</p>
+<p>哈哈</p>
+<p>无敌啦</p>
+<p>真当世界一成不变呢</p>
+<p>已经发生在我们身上的世界是一成不变的</p>
+<p>想了解一下有没有实习的或者已经毕业的学长学姐都是去哪里实习工作啊</p>
+<p>不少去大厂的</p>
+<p>来个熟实习就业的老登往生存手册里加一条</p>
+<p>刚刷到新闻，川大匹兹堡亖啦？</p>
+<p>就业主流就是读完研去互联网大厂咯，近几年经济下行，大家求稳，去银行、国企变多了</p>
+<p>果园以后会不会也这样</p>
+<p>我已经没有资格了，我放到北邮人论坛里已经属于是吃尽时代红利让后人无路可走的老登了</p>
+<p>让我想起一个我在小红书里看到一个好几年前报电气提前批现在已经工作的人，让高三生无脑冲电气，我说强电就业局限性大，高三生最快也得四年才能就业，以后想靠电气获得稳定的工作会很卷，那人就各种说教……</p>
+<p>这是我2022年在新生群答疑的时候统计的我们班的就业去向：</p>
+<p>百度产品经理、阿里码农、银行不知道干啥、AWS码农、通信写论文的、微软码农、读博未毕业专业也不明、失联、腾讯码农、世纪互联运维、银行轮岗、谷歌码农、失联（大概率不是码农）、失联、读博区块链方向、阿里码农、美国啥啥独角兽码农、银行非码农岗、养猴子的、失联、农行非码农、失联、读博专业不明、失联、搜狗码农、失联、微软苏州、野球帝、CV博士在读、字节跳动码农、交行码农、失联、失联、失联、运营商码农</p>
+<p>@25-电管-某 野球帝？</p>
+<p>是的，帝哥本人是果园学生会2012级体育部部长</p>
+<p>应该是部长吧，忘了</p>
+<p>@25-电管-某 哦哦</p>
+<p>这里面大家最感兴趣的就是野球帝和养猴子的。野球帝是纯纯的果园创业，12级的创始人，13级14级的主力成员。你现在翻野球帝的公众号历史文章还能翻到他回忆宏福校区。那时候属于是开个公众号就能创业的时期，学校里有想法的同学没少开公众号。</p>
+<p>养猴子的那个，他是本科毕设接了个医疗方向的计算机视觉课题</p>
+<p>好厉害，能获取到这么多同学的去向</p>
+<p>于是就因为有这个背景，他申研的时候也申了这个方向</p>
+<p>感觉我现在就和班里很多人失联了</p>
+<p>从此他就在医疗方向一条路走到黑了</p>
+<p>一年见2次</p>
+<p>这里面有啥可以更新的呢，我想想……</p>
+<p>一个谷歌码农跳到苹果了</p>
+<p>CV博士已经有资格招博士生了</p>
+<p>搜狗码农由于搜狗被腾讯收购，变成腾讯码农了</p>
+<p>有一个腾讯码农，跳槽到一家日企做推荐算法，然后由于近几年众所周知的形势，被裁员，然后同学内推去了字节</p>
+<p>其他人我就不知道了</p>
+<p>绝大多数人没有换工作，包括互联网公司的，包括AWS的。当年传说亚马逊流动性很大，实际这也干了五年多了没流动。</p>
+<p>我国内就业的同学只有这一个换了工作</p>
+<p>好稳定</p>
+<p>失联率挺高的</p>
+<p>（主要是是女生，人家没发朋友圈晒offer，我也不好意思问）</p>
+<p>我们班平时发朋友圈的可能只有10个人</p>
+<p>哦哦哦</p>
+<p>感谢感谢</p>
+<p>以上这是2019～2020年研究生毕业的果园人的就业具体样本。当然，现在由于经济形势，这份样本的参考价值已经大打折扣。不过至少能说明在相同时期果园的就业质量和北邮其他学院没有什么差异</p>
+<p>好的谢谢</p>
+<p>2022年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d3276867104990/pdf">https://maifile.cn/est/d3276867104990/pdf</a><br>2021年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d2296867105600/pdf">https://maifile.cn/est/d2296867105600/pdf</a><br>2020年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d3216867105932/pdf">https://maifile.cn/est/d3216867105932/pdf</a><br>2019年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d2326867106276/pdf">https://maifile.cn/est/d2326867106276/pdf</a><br>2018年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d2216867106578/pdf">https://maifile.cn/est/d2216867106578/pdf</a><br>2017年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d2246867106902/pdf">https://maifile.cn/est/d2246867106902/pdf</a><br>2016年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d2986867107223/pdf">https://maifile.cn/est/d2986867107223/pdf</a><br>2015年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d2266867107557/pdf">https://maifile.cn/est/d2266867107557/pdf</a><br>2014年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d2276867107928/pdf">https://maifile.cn/est/d2276867107928/pdf</a><br>2013年就业报告：<a target="_blank" rel="noopener" href="https://maifile.cn/est/d3076867108283/pdf">https://maifile.cn/est/d3076867108283/pdf</a></p>
+<p>@25-电管-某 这些我能转发到招生群里吗？谢谢</p>
+<p>北京邮电大学2023届毕业生就业质量年度报告.pdf</p>
+<p>3.82 MB 已过期</p>
+<p>哇哦，这么全，学校官网都下不到吧hhhh</p>
+<p>[打call][打call]</p>
+<p>为什么没有2024届的</p>
+<p>[表情][表情][表情]</p>
+<p>@22-智科-北邮学弟速速加我 2024只有一个微信公众号的推文</p>
+<p>学校是不是一直没发2024届的</p>
+<p>好像不敢发</p>
+<p>别转野球帝，我真不记得他是谁了，怕说错了</p>
+<p>对，那个推文数据太少了</p>
+<p>@25-电商-乳糖不耐谢谢 怕被别的学校围攻吗</p>
+<p>不是，北邮能发，已经很牛逼了</p>
+<p>二四年大多数学校都不敢发就业报告</p>
+<p>行情太烂了</p>
+<p>23届都敢发，24届比23就业好很多吧</p>
+<p>我记得是23届就业最烂来着</p>
+<p>我记得就西安电子发的比较详细</p>
+<p>@22-智科-北邮学弟速速加我 啊这</p>
+<p>@25-电管-某 好的，非常感谢[表情][表情][表情]</p>
+<p>2022年，虽然学校在就业质量报告里又建设西部又响应号召的，只字不提互联网公司。但是排名靠前的还是互联网</p>
+<p>2023年…</p>
+<p>运营商：在想我的事？</p>
+<p>就业史上最黑暗一年</p>
+<p>@23-物联网-刘南府 救救代码😭</p>
+<p>23年就是就业很烂，互联网公司招的很少</p>
+<p>图片已过期</p>
+<p>别问我了饱饱</p>
+<p>我准备熬了</p>
+<p>🤔</p>
+<p>@22-智科-出大二笔记 挖槽北邮原来这么牛逼</p>
+<p>@25-电商-乳糖不耐谢谢 确实</p>
+<p>北邮的就业一直很厉害</p>
+<p>前几天看到一个wxj的学生在小红书说</p>
+<p>今年他知道的，总包上100万的北邮学生有十几个</p>
+<p>那是大佬牛逼，我就算了</p>
+<p>今年好像还出了个华为天才少年</p>
+<p>图片已过期</p>
+<p>大伙都太有实力了</p>
+<p>大伙都太有实力了</p>
+<p>图片已过期</p>
+<p>大伙都太有实力了</p>
+</div></article></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/icon.jpg" alt="Attenna"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Attenna</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">7</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Attenna" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/Attenna"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">实习记录</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">生活记录</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-08-03T09:48:26.000Z">2025-08-03</time></p><p class="title"><a href="/2025/08/03/%E5%B7%A5%E6%97%B6%EF%BC%8C%E6%97%B6%E8%96%AA/">工时，时薪</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-08-01T06:23:29.000Z">2025-08-01</time></p><p class="title"><a href="/2025/08/01/%E9%BB%84%E9%87%91-%E9%BB%84%E9%87%91/">黄金 黄金</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-08-01T03:44:29.000Z">2025-08-01</time></p><p class="title"><a href="/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/">翼掌柜图像编辑页面的思路</a></p><p class="categories"><a href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-29T11:06:00.000Z">2025-07-29</time></p><p class="title"><a href="/2025/07/29/%E4%B8%8B%E7%8F%AD%E5%90%8E%E7%9A%84%E6%84%9F%E6%83%B3/">下班后的感想</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a> / <a href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-02T02:41:00.000Z">2025-07-02</time></p><p class="title"><a href="/2025/07/02/%E6%A2%A6%E5%A2%83%E8%AE%B0%E5%BD%95/">梦境记录，写给北邮的情书</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2025/08/"><span class="level-start"><span class="level-item">八月 2025</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2025/07/"><span class="level-start"><span class="level-item">七月 2025</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/%E4%BA%BA%E7%89%A9/"><span class="tag">人物</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%9E%E5%BF%86/"><span class="tag">回忆</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%80%9D%E8%80%83/"><span class="tag">思考</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%8A%80%E6%9C%AF/"><span class="tag">技术</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A2%A6/"><span class="tag">梦</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%81%8C%E4%B8%9A/"><span class="tag">职业</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%92%E6%98%A5/"><span class="tag">青春</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/icon.jpg" alt="Attenna的博客" height="28"></a><p class="is-size-7"><span>&copy; 2025 Attenna</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
