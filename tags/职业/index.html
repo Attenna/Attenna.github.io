@@ -37,11 +37,9 @@
 <p>有时候做梦梦见自己过上了不是和平饭店不住，不是汤臣一品不买的生活，但现实生活是住在了十几平米的酒店小楼，过着欠债上班的日子。</p>
 <p>我倒是有个买个ipad的梦想，但是ipad也好贵啊，根本买不起。和Apple店员打太极的日子让我有了信口开河的能力。</p>
 <p>赚钱真是不容易啊。</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-08-01T03:44:29.000Z" title="2025/8/1 11:44:29">2025-08-01</time>发表</span><span class="level-item"><time dateTime="2025-08-04T02:33:34.737Z" title="2025/8/4 10:33:34">2025-08-04</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></span><span class="level-item">11 分钟读完 (大约1681个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/">翼掌柜图像编辑页面的思路</a></p><div class="content"><p>本文来自本人的实习记录。</p>
-<h3 id="需求分析："><a href="#需求分析：" class="headerlink" title="需求分析："></a>需求分析：</h3><p>我们能产生的图像需要至少达到以下程度，目前来说，已经可以生成ai图片，嵌入文字，叠放图片。  </p>
-<p><img src="https://attenna8.wordpress.com/wp-content/uploads/2025/08/image.png?w=493"></p>
-<p>软件已经实现了上传用户自定义素材，和增加文字描述的基础功能  </p>
-<p><img src="https://attenna8.wordpress.com/wp-content/uploads/2025/08/image-1.png?w=472"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-08-01T03:44:29.000Z" title="2025/8/1 11:44:29">2025-08-01</time>发表</span><span class="level-item"><time dateTime="2025-08-04T05:03:57.123Z" title="2025/8/4 13:03:57">2025-08-04</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></span><span class="level-item">11 分钟读完 (大约1661个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/">翼掌柜图像编辑页面的思路</a></p><div class="content"><p>本文来自本人的实习记录。</p>
+<h3 id="需求分析："><a href="#需求分析：" class="headerlink" title="需求分析："></a>需求分析：</h3><p>我们能产生的图像需要至少达到以下程度，目前来说，已经可以生成ai图片，嵌入文字，叠放图片。</p>
+<p>软件已经实现了上传用户自定义素材，和增加文字描述的基础功能</p>
 <p>但是，目前来说，文字没法修改大小，字重，字体，有时候ai生成的构图并不合理，需要调节（如例图，例图的洗衣机被放置在了左侧）</p>
 <p>因此，我们对于字体嵌入，需要添加大小，字重，字体选项；对于ai生成的构图，需要调用扩图接口，擦除接口，改写接口（后两者是同一个接口）</p>
 <p>不过我不知道开发规范，所以就先瞎写了</p>
@@ -91,9 +89,11 @@
 
 <p><strong>2. 在主文件中使用</strong></p>
 <!-- 引入组件 -->
+
 <link rel="import" href="component.html" id="header-template">
 
 <!-- 使用自定义元素 -->
+
 <my-header>
   <span slot="subtitle">自定义副标题</span>
 </my-header>
@@ -115,6 +115,7 @@
 <hr>
 <h4 id="方法-4：服务端包含（需服务器支持）"><a href="#方法-4：服务端包含（需服务器支持）" class="headerlink" title="方法 4：服务端包含（需服务器支持）"></a>方法 4：服务端包含（需服务器支持）</h4><p><strong>Apache 示例 (启用 SSI)</strong>：</p>
 <!-- 直接引入子文件 -->
+
 <!--#include virtual="header.html" -->
 
 <p><strong>要求</strong>：</p>
