@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>翼掌柜图像编辑页面的思路 | 我的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文来自本人的实习记录。 需求分析：我们能产生的图像需要至少达到以下程度，目前来说，已经可以生成ai图片，嵌入文字，叠放图片。 软件已经实现了上传用户自定义素材，和增加文字描述的基础功能 但是，目前来说，文字没法修改大小，字重，字体，有时候ai生成的构图并不合理，需要调节（如例图，例图的洗衣机被放置在了左侧） 因此，我们对于字体嵌入，需要添加大小，字重，字体选项；对于ai生成的构图，需要调用扩图接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翼掌柜图像编辑页面的思路">
+<meta property="og:url" content="https://attenna.github.io/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/index.html">
+<meta property="og:site_name" content="我的技术博客">
+<meta property="og:description" content="本文来自本人的实习记录。 需求分析：我们能产生的图像需要至少达到以下程度，目前来说，已经可以生成ai图片，嵌入文字，叠放图片。 软件已经实现了上传用户自定义素材，和增加文字描述的基础功能 但是，目前来说，文字没法修改大小，字重，字体，有时候ai生成的构图并不合理，需要调节（如例图，例图的洗衣机被放置在了左侧） 因此，我们对于字体嵌入，需要添加大小，字重，字体选项；对于ai生成的构图，需要调用扩图接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-31T19:44:29.000Z">
+<meta property="article:modified_time" content="2025-08-04T08:01:10.262Z">
+<meta property="article:author" content="博主">
+<meta property="article:tag" content="职业">
+<meta property="article:tag" content="技术">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">我的技术博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录学习与成长的点点滴滴</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://attenna.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-翼掌柜图像编辑页面的思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2025-07-31T19:44:29.000Z" itemprop="datePublished">2025-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      翼掌柜图像编辑页面的思路
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文来自本人的实习记录。</p>
+<h3 id="需求分析："><a href="#需求分析：" class="headerlink" title="需求分析："></a>需求分析：</h3><p>我们能产生的图像需要至少达到以下程度，目前来说，已经可以生成ai图片，嵌入文字，叠放图片。</p>
+<p>软件已经实现了上传用户自定义素材，和增加文字描述的基础功能</p>
+<p>但是，目前来说，文字没法修改大小，字重，字体，有时候ai生成的构图并不合理，需要调节（如例图，例图的洗衣机被放置在了左侧）</p>
+<p>因此，我们对于字体嵌入，需要添加大小，字重，字体选项；对于ai生成的构图，需要调用扩图接口，擦除接口，改写接口（后两者是同一个接口）</p>
+<p>不过我不知道开发规范，所以就先瞎写了</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><h4 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h4><p>使用main.html作为主页面，主页面包括了子节点容器（godot的思想），底部栏容器，按钮。<br>使用main.js（反正是个什么后端语言）作为主界面的后端。它负责调用main.html引用了哪些子节点。</p>
+<h4 id="子节点"><a href="#子节点" class="headerlink" title="子节点"></a>子节点</h4><p>子节点实现子功能。</p>
+<h5 id="贴纸（stickers）（幻想中）"><a href="#贴纸（stickers）（幻想中）" class="headerlink" title="贴纸（stickers）（幻想中）"></a>贴纸（stickers）（幻想中）</h5><p>调用微信的表情包api（应该有的），然后如法炮制上传本地图片作为贴纸的代码就可以了。</p>
+<h5 id="上传本地图片作为贴纸（upload-logo）（已经实现）"><a href="#上传本地图片作为贴纸（upload-logo）（已经实现）" class="headerlink" title="上传本地图片作为贴纸（upload logo）（已经实现）"></a>上传本地图片作为贴纸（upload logo）（已经实现）</h5><p>上传本地图片作为贴纸，已经实现了。</p>
+<h5 id="嵌入文字（embedding-texts）（已经实现）"><a href="#嵌入文字（embedding-texts）（已经实现）" class="headerlink" title="嵌入文字（embedding texts）（已经实现）"></a>嵌入文字（embedding texts）（已经实现）</h5><p>嵌入文字也已经实现了。<br>生成一个矢量文本框，然后可以对矢量文本框进行旋转，移动，缩放，改色功能。</p>
+<h5 id="AI图像抹除（ai-eliminate）（幻想中）"><a href="#AI图像抹除（ai-eliminate）（幻想中）" class="headerlink" title="AI图像抹除（ai eliminate）（幻想中）"></a>AI图像抹除（ai eliminate）（幻想中）</h5><p>ai图像抹除已经基本实现了</p>
+<h5 id="AI局部重绘（ai-regenerate）（幻想中）"><a href="#AI局部重绘（ai-regenerate）（幻想中）" class="headerlink" title="AI局部重绘（ai regenerate）（幻想中）"></a>AI局部重绘（ai regenerate）（幻想中）</h5><p>ai局部重绘和ai图像抹除是同一个api，改改post请求参数就可以了</p>
+<h5 id="AI扩图（ai-expand）（幻想中）"><a href="#AI扩图（ai-expand）（幻想中）" class="headerlink" title="AI扩图（ai expand）（幻想中）"></a>AI扩图（ai expand）（幻想中）</h5><p>这个api不一样，修改构图还是比较重要，有必要做。</p>
+<h3 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h3><h4 id="怎么让html引用子节点（其它html）？"><a href="#怎么让html引用子节点（其它html）？" class="headerlink" title="怎么让html引用子节点（其它html）？"></a>怎么让html引用子节点（其它html）？</h4><blockquote>
+<p><em>ai回答的</em></p>
+</blockquote>
+<p>在 HTML 中直接引用其他 HTML 文件（子节点）可以通过以下几种常用方法实现：</p>
+<hr>
+<h5 id="方法-1：使用-（简单但内容隔离）"><a href="#方法-1：使用-（简单但内容隔离）" class="headerlink" title="方法 1：使用 &lt;iframe&gt;（简单但内容隔离）"></a>方法 1：使用 <code>&lt;iframe&gt;</code>（简单但内容隔离）</h5><pre><code>`&lt;iframe src=&quot;header.html&quot; width=&quot;100%&quot; height=&quot;100px&quot;&gt;&lt;/iframe&gt;`
+</code></pre>
+<p><strong>特点</strong> ：</p>
+<ul>
+<li>内容独立（样式&#x2F;脚本不共享）</li>
+<li>需手动调整高度（可用 JS 动态调整）</li>
+</ul>
+<hr>
+<h4 id="方法-2：JavaScript-动态加载（推荐）"><a href="#方法-2：JavaScript-动态加载（推荐）" class="headerlink" title="方法 2：JavaScript 动态加载（推荐）"></a>方法 2：JavaScript 动态加载（推荐）</h4><p>使用 <code>fetch()</code> 或 <code>XMLHttpRequest</code> 加载 HTML 内容并插入 DOM：</p>
+<pre><code>`&lt;div id=&quot;header-container&quot;&gt;&lt;/div&gt;`
+
+`&lt;script&gt;`
+  // 动态加载 header.html
+  fetch(&#39;header.html&#39;)
+    .then(response =&gt; response.text())
+    .then(html =&gt; &#123;
+      document.getElementById(&#39;header-container&#39;).innerHTML = html;
+    &#125;)
+    .catch(error =&gt; console.error(&#39;加载失败:&#39;, error));
+`&lt;/script&gt;`
+</code></pre>
+<hr>
+<h4 id="方法-3：HTML5-Web-Components（现代标准）"><a href="#方法-3：HTML5-Web-Components（现代标准）" class="headerlink" title="方法 3：HTML5 Web Components（现代标准）"></a>方法 3：HTML5 Web Components（现代标准）</h4><p>使用 <code>&lt;template&gt;</code> 和 <code>&lt;slot&gt;</code> 创建可重用组件：</p>
+<p><strong>1. 定义模板组件 (component.html)</strong></p>
+<pre><code>`&lt;template id=&quot;my-header&quot;&gt;`
+  `&lt;header&gt;`
+    `&lt;h1&gt;`网站标题`&lt;/h1&gt;`
+    `&lt;slot name=&quot;subtitle&quot;&gt;`默认副标题`&lt;/slot&gt;`
+  `&lt;/header&gt;`
+`&lt;/template&gt;`
+</code></pre>
+<p><strong>2. 在主文件中使用</strong></p>
+<pre><code>`&lt;!-- 引入组件 --&gt;`
+`&lt;link rel=&quot;import&quot; href=&quot;component.html&quot; id=&quot;header-template&quot;&gt;`
+
+`&lt;!-- 使用自定义元素 --&gt;`
+`&lt;my-header&gt;`
+  `&lt;span slot=&quot;subtitle&quot;&gt;`自定义副标题
+`&lt;/my-header&gt;`
+
+`&lt;script&gt;`
+  // 注册自定义组件
+  const template = document.querySelector(&#39;#header-template&#39;).import;
+  const headerTemplate = template.querySelector(&#39;#my-header&#39;);
+
+customElements.define(&#39;my-header&#39;, class extends HTMLElement &#123;
+    constructor() &#123;
+      super();
+      const shadow = this.attachShadow(&#123;mode: &#39;open&#39;&#125;);
+      shadow.appendChild(headerTemplate.content.cloneNode(true));
+    &#125;
+  &#125;);`&lt;/script&gt;`
+</code></pre>
+<hr>
+<h4 id="方法-4：服务端包含（需服务器支持）"><a href="#方法-4：服务端包含（需服务器支持）" class="headerlink" title="方法 4：服务端包含（需服务器支持）"></a>方法 4：服务端包含（需服务器支持）</h4><p><strong>Apache 示例 (启用 SSI)</strong> ：</p>
+<pre><code>`&lt;!-- 直接引入子文件 --&gt;`
+`&lt;!--#include virtual=&quot;header.html&quot; --&gt;`
+</code></pre>
+<p><strong>要求</strong> ：</p>
+<ul>
+<li>文件需以 <code>.shtml</code> 结尾</li>
+<li>服务器开启 SSI 功能</li>
+</ul>
+<hr>
+<h4 id="方法-5：构建工具预处理（工程化方案）"><a href="#方法-5：构建工具预处理（工程化方案）" class="headerlink" title="方法 5：构建工具预处理（工程化方案）"></a>方法 5：构建工具预处理（工程化方案）</h4><p>使用 Webpack&#x2F;Parcel 等工具的 HTML 插件：</p>
+<pre><code>// Webpack 配置示例 (使用 html-webpack-plugin)
+plugins: [
+  new HtmlWebpackPlugin(&#123;
+    template: &quot;./src/index.html&quot;,
+    chunks: [&quot;main&quot;]
+  &#125;),
+  new HtmlWebpackPlugin(&#123;
+    filename: &quot;header.html&quot;,
+    template: &quot;./src/parts/header.html&quot;
+  &#125;)
+]
+</code></pre>
+<hr>
+<h4 id="⚠️-注意事项"><a href="#⚠️-注意事项" class="headerlink" title="⚠️ 注意事项"></a>⚠️ 注意事项</h4><ol>
+<li><strong>跨域问题</strong> ：动态加载时需确保同源（或配置 CORS）</li>
+<li><strong>SEO 影响</strong> ：JS 动态加载的内容可能不被搜索引擎索引</li>
+<li><strong>性能</strong> ：小文件推荐内联，大文件考虑缓存</li>
+<li><strong>框架方案</strong> ：</li>
+</ol>
+<ul>
+<li>React&#x2F;Vue&#x2F;Angular 有专用组件系统</li>
+<li>PHP&#x2F;JSP 等后端语言原生支持 <code>include()</code></li>
+</ul>
+<hr>
+<h4 id="示例目录结构"><a href="#示例目录结构" class="headerlink" title="示例目录结构"></a>示例目录结构</h4><pre><code>project/
+├── index.html
+├── components/
+│   ├── header.html
+│   └── footer.html
+└── scripts/
+    └── load-components.js
+</code></pre>
+<p>根据项目需求选择最适合的方案，小型项目推荐 <strong>JS 动态加载</strong> ，大型应用推荐 <strong>Web Components</strong> 或 <strong>构建工具集成</strong> 。</p>
+<h3 id="和后端怎么通信？"><a href="#和后端怎么通信？" class="headerlink" title="和后端怎么通信？"></a>和后端怎么通信？</h3><h3 id="后端脚本之间需要通信吗？"><a href="#后端脚本之间需要通信吗？" class="headerlink" title="后端脚本之间需要通信吗？"></a>后端脚本之间需要通信吗？</h3><p>大概是需要的。</p>
+<blockquote>
+<p>以下为ai生成</p>
+<h4 id="Python-Flask-后端脚本间通信实现方式"><a href="#Python-Flask-后端脚本间通信实现方式" class="headerlink" title="Python Flask 后端脚本间通信实现方式"></a>Python Flask 后端脚本间通信实现方式</h4></blockquote>
+<p>最简单的是使用数据库。<br>在 Flask 后端应用中，有几种常见的方式可以实现不同脚本或组件之间的通信：</p>
+<h5 id="1-模块导入与函数调用"><a href="#1-模块导入与函数调用" class="headerlink" title="1. 模块导入与函数调用"></a>1. 模块导入与函数调用</h5><p>最简单直接的方式是通过 Python 的模块导入机制：</p>
+<pre><code># script_a.py
+def some_function():
+    return &quot;Hello from script A&quot;
+
+# script_b.py
+from script_a import some_function
+
+result = some_function()
+</code></pre>
+<h5 id="2-使用-Flask-的请求上下文"><a href="#2-使用-Flask-的请求上下文" class="headerlink" title="2. 使用 Flask 的请求上下文"></a>2. 使用 Flask 的请求上下文</h5><p>对于需要 HTTP 接口通信的情况：</p>
+<pre><code># service_a.py
+from flask import Flask
+app = Flask(__name__)
+
+@app.route(&#39;/api&#39;)
+def api_endpoint():
+    return &#123;&quot;message&quot;: &quot;Hello from Service A&quot;&#125;
+
+# service_b.py
+import requests
+
+response = requests.get(&#39;http://localhost:5000/api&#39;)
+print(response.json())
+</code></pre>
+<h5 id="3-消息队列-RabbitMQ-Redis等"><a href="#3-消息队列-RabbitMQ-Redis等" class="headerlink" title="3. 消息队列 (RabbitMQ, Redis等)"></a>3. 消息队列 (RabbitMQ, Redis等)</h5><p>对于异步或解耦的通信：</p>
+<pre><code># producer.py
+import pika
+
+connection = pika.BlockingConnection(pika.ConnectionParameters(&#39;localhost&#39;))
+channel = connection.channel()
+channel.queue_declare(queue=&#39;hello&#39;)
+
+channel.basic_publish(exchange=&#39;&#39;, routing_key=&#39;hello&#39;, body=&#39;Hello from Producer!&#39;)
+
+# consumer.py
+import pika
+
+def callback(ch, method, properties, body):
+    print(f&quot;Received &#123;body&#125;&quot;)
+
+connection = pika.BlockingConnection(pika.ConnectionParameters(&#39;localhost&#39;))
+channel = connection.channel()
+channel.queue_declare(queue=&#39;hello&#39;)
+channel.basic_consume(queue=&#39;hello&#39;, on_message_callback=callback, auto_ack=True)
+channel.start_consuming()
+</code></pre>
+<h5 id="4-使用数据库作为中介"><a href="#4-使用数据库作为中介" class="headerlink" title="4. 使用数据库作为中介"></a>4. 使用数据库作为中介</h5><pre><code># writer.py
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(200))
+
+# 写入消息
+new_msg = Message(content=&quot;Hello from Writer&quot;)
+db.session.add(new_msg)
+db.session.commit()
+
+# reader.py
+from models import Message
+
+messages = Message.query.all()
+for msg in messages:
+    print(msg.content)
+</code></pre>
+<h5 id="5-使用-Python-内置队列"><a href="#5-使用-Python-内置队列" class="headerlink" title="5. 使用 Python 内置队列"></a>5. 使用 Python 内置队列</h5><pre><code># shared_queue.py
+from queue import Queue
+
+message_queue = Queue()
+
+# producer.py
+from shared_queue import message_queue
+
+message_queue.put(&quot;Message 1&quot;)
+
+# consumer.py
+from shared_queue import message_queue
+
+msg = message_queue.get()
+print(msg)
+</code></pre>
+<h5 id="6-使用-Flask-的蓝图-Blueprint-组织代码"><a href="#6-使用-Flask-的蓝图-Blueprint-组织代码" class="headerlink" title="6. 使用 Flask 的蓝图(Blueprint)组织代码"></a>6. 使用 Flask 的蓝图(Blueprint)组织代码</h5><p>对于大型应用，可以使用蓝图组织不同模块：</p>
+<pre><code># api/__init__.py
+from flask import Blueprint
+
+api = Blueprint(&#39;api&#39;,__name__)
+
+from . import routes
+
+# api/routes.py
+from . import api
+
+@api.route(&#39;/endpoint&#39;)
+def endpoint():
+    return &#123;&quot;status&quot;: &quot;success&quot;&#125;
+</code></pre>
+<h5 id="选择哪种方式取决于具体需求："><a href="#选择哪种方式取决于具体需求：" class="headerlink" title="选择哪种方式取决于具体需求："></a>选择哪种方式取决于具体需求：</h5><ul>
+<li>简单同步通信：模块导入或函数调用</li>
+<li>需要 HTTP 接口：Flask 路由</li>
+<li>异步或解耦：消息队列</li>
+<li>数据持久化：数据库</li>
+<li>进程间通信：队列或消息代理</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://attenna.github.io/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/" data-id="cmdwtpn7b000cdgkthyq1c5fk" data-title="翼掌柜图像编辑页面的思路" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A/" rel="tag">职业</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/08/01/%E9%BB%84%E9%87%91-%E9%BB%84%E9%87%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          黄金 黄金
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/08/01/Hello-World/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hello World!</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Uncategorized/">Uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8F%82%E8%80%83/">参考</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%89%A9/" rel="tag">人物</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%82%E8%80%83/" rel="tag">参考</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E5%BF%86/" rel="tag">回忆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A2%A6/" rel="tag">梦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%99%E7%82%B9%E7%9B%B8%E5%85%B3/" rel="tag">站点相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A/" rel="tag">职业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%92%E6%98%A5/" rel="tag">青春</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/%E4%BA%BA%E7%89%A9/" style="font-size: 10px;">人物</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">博客搭建</a> <a href="/tags/%E5%8F%82%E8%80%83/" style="font-size: 10px;">参考</a> <a href="/tags/%E5%9B%9E%E5%BF%86/" style="font-size: 15px;">回忆</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 15px;">思考</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 15px;">技术</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 10px;">教程</a> <a href="/tags/%E6%A2%A6/" style="font-size: 10px;">梦</a> <a href="/tags/%E7%AB%99%E7%82%B9%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">站点相关</a> <a href="/tags/%E8%81%8C%E4%B8%9A/" style="font-size: 20px;">职业</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E9%9D%92%E6%98%A5/" style="font-size: 10px;">青春</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">八月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/08/04/markdown-cheatsheet/">Markdown 语法速查表</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/04/hexo-guide/">Hexo 博客搭建指南</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/01/%E9%BB%84%E9%87%91-%E9%BB%84%E9%87%91/">黄金 黄金</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/">翼掌柜图像编辑页面的思路</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/01/Hello-World/">Hello World!</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 博主<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
