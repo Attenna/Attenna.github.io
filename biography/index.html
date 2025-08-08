@@ -113,14 +113,31 @@
 <h3 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h3><p><del>个人博客网页：<a target="_blank" rel="noopener" href="https://attenna8.wordpress.com/">https://attenna8.wordpress.com/</a></del></p>
 <p>个人博客网页：<a href="https://attenna.github.io/">https://attenna.github.io</a></p>
 <p>个人Github主页：Attenna</p>
-<p>个人邮箱：<a href="mailto:&#x67;&#101;&#x6f;&#114;&#x67;&#x65;&#x5f;&#53;&#50;&#57;&#56;&#64;&#111;&#117;&#x74;&#x6c;&#111;&#111;&#107;&#x2e;&#99;&#111;&#109;">&#x67;&#101;&#x6f;&#114;&#x67;&#x65;&#x5f;&#53;&#50;&#57;&#56;&#64;&#111;&#117;&#x74;&#x6c;&#111;&#111;&#107;&#x2e;&#99;&#111;&#109;</a></p>
+<p>个人邮箱：<a href="mailto:&#x67;&#x65;&#111;&#x72;&#x67;&#101;&#95;&#x35;&#50;&#57;&#56;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#99;&#111;&#109;">&#x67;&#x65;&#111;&#x72;&#x67;&#101;&#95;&#x35;&#50;&#57;&#56;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#99;&#111;&#109;</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://attenna.github.io/biography/index.html" data-id="cme1cfvl40002awkt51kce0cl" data-title="Biography 关于我这个人" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
+      <!-- 操作区：分享 / 留言 / 邮件评论 -->
+      <div class="article-actions">
+        <a data-url="https://attenna.github.io/biography/index.html" data-id="cme25ohwm00024gktdwle30sv" data-title="Biography 关于我这个人" class="article-share-link" title="分享">
+          <span class="fa fa-share"></span>
+          <span class="action-text">分享</span>
+        </a>
+        
+        
+        
+          <a href="/biography/index.html#comments" class="article-comment-link" title="留言">
+            <span class="fa fa-comment"></span>
+            <span class="action-text">留言</span>
+          </a>
+        
+        <!-- 邮件联系链接 -->
+        <a href="mailto:george_5298@outlook.com?subject=关于文章「Biography 关于我这个人」的评论&body=你好，我想对你的文章「Biography 关于我这个人」发表一些看法：%0A%0A" class="article-email-link" title="通过邮件发表评论">
+          <span class="fa fa-envelope"></span>
+          <span class="action-text">邮件评论</span>
+        </a>
+      </div>
       
     </footer>
   </div>
@@ -130,6 +147,18 @@
 </article>
 
 
+
+
+<!-- 评论框容器（去除外层section，直接使用自身作为锚点） -->
+<div class="commentbox" id="comments"></div>
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+  commentBox('5705101083672576-proj', {
+    backgroundColor: '#ffffff',
+    textColor: '#333333',
+    subtextColor: '#999999'
+  });
+</script>
 </section>
         
           <aside id="sidebar">
@@ -213,7 +242,10 @@
     <div id="footer-info" class="inner">
       
       &copy; 2025 Attenna<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      <a href="mailto:george_5298@outlook.com" class="footer-email-link">
+        <span class="fa fa-envelope"></span> 给我发邮件
+      </a>
     </div>
   </div>
 </footer>

@@ -684,9 +684,40 @@ a.article-title:hover {
 .article-footer:after {
   clear: both;
 }
+.article-footer .article-actions {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 16px;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
 .article-footer a {
   color: #999;
   text-decoration: none;
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 6px;
 }
 .article-footer a:hover {
   color: #555;
@@ -711,6 +742,19 @@ a.article-title:hover {
 }
 .article-share-link:before {
   padding-right: 6px;
+}
+.article-email-link {
+  cursor: pointer;
+  float: right;
+  margin-left: 20px;
+  color: #999;
+  text-decoration: none;
+}
+.article-email-link:hover {
+  color: #258fb8;
+}
+.article-email-link .fa {
+  margin-right: 4px;
 }
 #article-nav {
   position: relative;
@@ -790,6 +834,37 @@ a.article-title:hover {
   font-size: 0.85em;
   line-height: 1.6em;
   margin-top: 0.5em;
+}
+.article-nav-date {
+  font-size: 0.75em;
+  color: #999;
+  margin-top: 0.3em;
+}
+.article-nav-extra {
+  text-align: center;
+  margin-top: 20px;
+}
+.article-nav-extra a {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 5px;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #999;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.article-nav-extra a:hover {
+  background: #258fb8;
+  color: #fff;
+  border-color: #258fb8;
+}
+.article-nav-extra a i {
+  font-size: 14px;
 }
 .article-share-box {
   position: absolute;
@@ -902,6 +977,25 @@ a.article-title:hover {
   display: block;
   max-width: 100%;
   margin: 0 auto;
+}
+#comments {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+.commentbox {
+  background: #fff;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 16px;
+  margin: 16px 0;
+}
+@media screen and (max-width: 479px) {
+  .commentbox {
+    padding: 12px;
+    margin: 12px 0;
+  }
 }
 #comments {
   background: #fff;
@@ -1052,6 +1146,13 @@ a.article-title:hover {
 #footer-info {
   line-height: 1.6em;
   font-size: 0.85em;
+}
+.footer-email-link {
+  margin-top: 5px;
+  display: inline-block;
+}
+.footer-email-link .fa {
+  margin-right: 4px;
 }
 .article-entry pre,
 .article-entry .highlight {

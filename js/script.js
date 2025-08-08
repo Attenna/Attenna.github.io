@@ -135,4 +135,23 @@
 
     $container.removeClass('mobile-nav-on');
   });
+
+  // Back to top functionality
+  $('.back-to-top').on('click', function(e){
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: 0
+    }, 600);
+  });
+
+  // Smooth scrolling for anchor links
+  $('a[href^="#"]').on('click', function(e){
+    var target = $(this.getAttribute('href'));
+    if (target.length) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: target.offset().top - 70
+      }, 600);
+    }
+  });
 })(jQuery);
