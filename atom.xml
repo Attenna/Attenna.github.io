@@ -6,7 +6,7 @@
   <link href="https://attenna.github.io/atom.xml" rel="self"/>
   
   <link href="https://attenna.github.io/"/>
-  <updated>2025-08-08T02:12:12.766Z</updated>
+  <updated>2025-08-08T07:55:31.711Z</updated>
   <id>https://attenna.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实习两星期我干了什么</title>
+    <link href="https://attenna.github.io/2025/08/08/%E5%AE%9E%E4%B9%A0%E4%B8%A4%E6%98%9F%E6%9C%9F%E6%88%91%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88/"/>
+    <id>https://attenna.github.io/2025/08/08/%E5%AE%9E%E4%B9%A0%E4%B8%A4%E6%98%9F%E6%9C%9F%E6%88%91%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88/</id>
+    <published>2025-08-08T07:49:04.000Z</published>
+    <updated>2025-08-08T07:55:31.711Z</updated>
+    
+    <content type="html"><![CDATA[<p>实习了两个星期，我到底干了什么呢？这篇文章以“第一周&#x2F;第二周”两部分做个阶段性记录，也把我摸清的概念和落地成果简明整理下来。</p><hr><h2 id="实习第一周我干了什么"><a href="#实习第一周我干了什么" class="headerlink" title="实习第一周我干了什么"></a>实习第一周我干了什么</h2><h2 id="什么是接口（API）"><a href="#什么是接口（API）" class="headerlink" title="什么是接口（API）"></a>什么是接口（API）</h2><p>接口（API，Application Programming Interface）是不同程序或系统之间通信与协作的“契约”。它规定了能做什么、怎么做、要什么参数、返回什么结果。</p><p>在实习中我主要接触 Web API（HTTP&#x2F;HTTPS），核心体会：</p><ol><li>定义交互方式：请求方法（GET&#x2F;POST 等）、URL、Headers、Body、响应格式（常见是 JSON）。例如图像擦除能力的接口会明确要求 Body 中必须包含 image、mask 等字段。</li><li>隐藏实现细节：调用方不需要知道后端或云端模型如何实现，只要按契约组织好参数即可。比如调用第三方的图像擦除&#x2F;重绘 API，就能获得处理后的结果。</li><li>模块化与解耦：项目里不同模块（数据获取&#x2F;查询&#x2F;写入）可以通过接口交互，哪怕它们在不同线程&#x2F;进程里，也能各自独立演进、降低耦合。</li></ol><h3 id="接口、协议、数据格式的关系"><a href="#接口、协议、数据格式的关系" class="headerlink" title="接口、协议、数据格式的关系"></a>接口、协议、数据格式的关系</h3><ul><li>协议：Web API 基于 HTTP&#x2F;HTTPS 协议，定义了连接、请求与响应的语义。</li><li>数据格式：我主要处理 JSON；图片等二进制常用 Base64 编码后放在 JSON 字段里传输，便于走文本协议。</li></ul><blockquote><p>备注：在实际脚本里（例如 app_fixed.py 这类对接脚本），会同时涉及签名&#x2F;鉴权、超时&#x2F;重试、错误码解析与日志打印，便于排错与追踪。</p></blockquote><h3 id="实战小结"><a href="#实战小结" class="headerlink" title="实战小结"></a>实战小结</h3><ul><li>能说明白一个接口“做什么&#x2F;要什么&#x2F;回什么”。</li><li>能构造请求（含必需参数与可选参数）并解析响应。</li><li>能处理异常：超时、4xx&#x2F;5xx、字段缺失、限流等。</li></ul><h2 id="什么是编程（以及常见算法思维）"><a href="#什么是编程（以及常见算法思维）" class="headerlink" title="什么是编程（以及常见算法思维）"></a>什么是编程（以及常见算法思维）</h2><p>编程不是死记 API，而是用合适的“方法”把问题拆开并实现。常见算法思想：</p><ol><li>枚举：把可能性都试一遍（适用于规模小、条件简单时）。</li><li>贪心：每一步做当前看起来最优的选择（要求问题具有贪心性质）。</li><li>分治：把大问题拆成相似的小问题分别解决，再合并结果。</li><li>回溯：带“撤销”的试错搜索，走不通就退回上一步换条路径。</li><li>搜索：在空间里找解。BFS（一层层扩散）、DFS（一条路走到头再回退）。</li><li>动态规划：把子问题答案存起来避免重复计算（重叠子问题&#x2F;最优子结构）。</li></ol><blockquote><p>实操里，我更多是把这些思维用在“拆分需求&#x2F;组装流程&#x2F;兜底容错”上，而不一定是写纯算法题。</p></blockquote><hr><h2 id="实习第二周我干了什么"><a href="#实习第二周我干了什么" class="headerlink" title="实习第二周我干了什么"></a>实习第二周我干了什么</h2><h2 id="AI-绘画研究"><a href="#AI-绘画研究" class="headerlink" title="AI 绘画研究"></a>AI 绘画研究</h2><h3 id="与-API-对接"><a href="#与-API-对接" class="headerlink" title="与 API 对接"></a>与 API 对接</h3><ul><li>明确了图像任务常见入参：prompt&#x2F;negative prompt、参考图、mask、尺寸、采样器、步数、种子等。</li><li>会封装调用：负责把本地数据（文件&#x2F;Canvas）编码、拼接成接口需要的 JSON，再发送请求并解析结果（图片&#x2F;视频&#x2F;状态）。</li></ul><h3 id="ComfyUI-工作流"><a href="#ComfyUI-工作流" class="headerlink" title="ComfyUI 工作流"></a>ComfyUI 工作流</h3><ul><li>搭了基础工作流，跑通“文生图&#x2F;图生图&#x2F;局部重绘&#x2F;扩图”等常见链路。</li><li>理解了节点式的组合方式：Loader → Sampler → VAE → 保存&#x2F;回传；知道哪些节点可替换、哪些参数对质量&#x2F;速度影响大。</li><li>能导出&#x2F;导入工作流配置，便于复现、分享与版本管理。</li></ul><h2 id="Transformer-速记（为什么它重要）"><a href="#Transformer-速记（为什么它重要）" class="headerlink" title="Transformer 速记（为什么它重要）"></a>Transformer 速记（为什么它重要）</h2><ul><li>自注意力（Self-Attention）能让模型在同一层里“看见”全局上下文；Q&#x2F;K&#x2F;V 机制用于相关性度量与加权汇总。</li><li>编码器&#x2F;解码器结构最初服务于序列建模，后来在多模态与扩散模型中扮演“特征抽取与条件控制”的角色。</li><li>对我这个方向的意义：理解 prompt&#x2F;条件图&#x2F;遮罩 是如何影响生成的，有助于合理设置参数与期望。</li></ul><h2 id="一个实打实的产出：图像集成编辑-HTML-组件"><a href="#一个实打实的产出：图像集成编辑-HTML-组件" class="headerlink" title="一个实打实的产出：图像集成编辑 HTML 组件"></a>一个实打实的产出：图像集成编辑 HTML 组件</h2><p>目标：在前端做一个“所见即所得”的小组件，集成基础编辑 + AI 能力，后续接入客信通微信小程序。</p><p>已做功能（阶段版）：</p><ul><li>贴纸&#x2F;Logo：上传本地图片作为贴纸，支持移动、缩放、旋转、层级管理。</li><li>文字：创建矢量文本，支持移动&#x2F;旋转&#x2F;缩放&#x2F;改色，后续补字体&#x2F;字重&#x2F;字号。</li><li>导出：将画布导出为图片以便后续加工&#x2F;上传。</li><li>AI 能力预留：<ul><li>局部擦除（inpaint&#x2F;erase）：传入 image + mask，拿回合成图。</li><li>局部重绘（regenerate）：与擦除共享同一 API，改参数即可。</li><li>扩图（outpaint&#x2F;expand）：改变画布构图，适配不同比例&#x2F;留白。</li></ul></li></ul><p>工程小结：</p><ul><li>前端：HTML&#x2F;Canvas（或 SVG）封装编辑层；</li><li>后端&#x2F;云端：以 HTTP API 提供 AI 能力；</li><li>协议与格式：JSON + Base64，必要时走分片&#x2F;上传临时文件；</li><li>可靠性：加上超时、重试、错误提示与日志，便于定位问题。</li></ul><blockquote><p>相关思路拓展可参见我的另一篇记录：<a href="/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/" title="翼掌柜图像编辑页面的思路">翼掌柜图像编辑页面的思路</a></p></blockquote><hr><h2 id="阶段复盘-下一步计划"><a href="#阶段复盘-下一步计划" class="headerlink" title="阶段复盘 &amp; 下一步计划"></a>阶段复盘 &amp; 下一步计划</h2><ul><li>已经从“能用 API”走到“能封装&#x2F;串流程&#x2F;做兜底”，同时把 ComfyUI 和生成式工作流跑通；</li><li>下阶段聚焦：<ol><li>完善前端编辑体验（字体&#x2F;字重&#x2F;字号、对齐线、撤销&#x2F;重做、历史版本）；</li><li>把擦除&#x2F;重绘&#x2F;扩图三条链路打磨成统一的后端网关；</li><li>引入任务排队与状态轮询，避免大图阻塞；</li><li>做一组可复现的对比用例与性能基线，指导参数选择。</li></ol></li></ul><p>这两周的关键词：概念清晰、接口规范、流程成形、可复现。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;实习了两个星期，我到底干了什么呢？这篇文章以“第一周&amp;#x2F;第二周”两部分做个阶段性记录，也把我摸清的概念和落地成果简明整理下来。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;实习第一周我干了什么&quot;&gt;&lt;a href=&quot;#实习第一周我干了什么&quot; class=&quot;headerlink&quot;</summary>
+      
+    
+    
+    
+    <category term="生活记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="实习记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
+    
+    <category term="实习" scheme="https://attenna.github.io/tags/%E5%AE%9E%E4%B9%A0/"/>
+    
+    <category term="总结" scheme="https://attenna.github.io/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>不是我的校庆</title>
