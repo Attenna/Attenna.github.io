@@ -139,9 +139,7 @@
   // Back to top functionality
   $('.back-to-top').on('click', function(e){
     e.preventDefault();
-    $('html, body').animate({
-      scrollTop: 0
-    }, 600);
+    $('html, body').animate({ scrollTop: 0 }, 600);
   });
 
   // Smooth scrolling for anchor links
@@ -149,9 +147,65 @@
     var target = $(this.getAttribute('href'));
     if (target.length) {
       e.preventDefault();
-      $('html, body').animate({
-        scrollTop: target.offset().top - 70
-      }, 600);
+      $('html, body').animate({ scrollTop: target.offset().top - 70 }, 600);
     }
   });
+
+  // 1) 回到顶部：滚动超过一屏才显
+  var $backTop = $('.quick-nav-widget .back-to-top');
+  function updateBackTopVisibility(){
+    if (!$(window).width()) return;
+    var threshold = window.innerHeight || document.documentElement.clientHeight;
+    if (window.scrollY > threshold){
+      $backTop.addClass('is-visible');
+    } else {
+      $backTop.removeClass('is-visible');
+    }
+  }
+  $(window).on('scroll resize', updateBackTopVisibility);
+  updateBackTopVisibility();
+
+  // 2) IntersectionObserver 控制侧栏 sticky/显隐
+  var quickNav = document.querySelector('.quick-nav-widget');
+  var mainFirstPost = document.querySelector('#main .article');
+  if (quickNav && mainFirstPost && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          // 文章顶部在视口可见 -> 取消锁定，保持在“最新文章下面”的自然位置
+          quickNav.classList.remove('is-sticky');
+          quickNav.classList.add('is-visible');
+        } else {
+          // 超过阈值 -> 开启锁定并显示
+          quickNav.classList.add('is-sticky');
+          quickNav.classList.add('is-visible');
+        }
+      });
+    }, { rootMargin: '-80px 0px 0px 0px', threshold: 0.0 });
+    io.observe(mainFirstPost);
+  } else if (quickNav){
+    // 兼容：若不支持 IO，默认显示
+    quickNav.classList.add('is-visible');
+  }
+
+  // 3) 上下篇卡片缩略图：改为服务端渲染（helpers.first_image），前端不再注入
+
+  // 悬浮回到顶部按钮：滚动超过一屏显示
+  var $floatingTop = $('.floating-back-top');
+  function updateFloatingTop(){
+    var threshold = window.innerHeight || document.documentElement.clientHeight;
+    if (window.scrollY > threshold){
+      $floatingTop.addClass('is-visible');
+    } else {
+      $floatingTop.removeClass('is-visible');
+    }
+  }
+  if ($floatingTop.length){
+    $(window).on('scroll resize', updateFloatingTop);
+    updateFloatingTop();
+    $floatingTop.on('click', function(){
+      $('html, body').animate({ scrollTop: 0 }, 600);
+    });
+  }
+
 })(jQuery);
