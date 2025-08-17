@@ -6,7 +6,7 @@
   <link href="https://attenna.github.io/atom.xml" rel="self"/>
   
   <link href="https://attenna.github.io/"/>
-  <updated>2025-08-17T07:30:10.361Z</updated>
+  <updated>2025-08-17T07:33:16.951Z</updated>
   <id>https://attenna.github.io/</id>
   
   <author>
@@ -21,15 +21,18 @@
     <link href="https://attenna.github.io/2025/08/17/%E5%8F%88%E6%98%AF%E4%B8%80%E5%91%A8/"/>
     <id>https://attenna.github.io/2025/08/17/%E5%8F%88%E6%98%AF%E4%B8%80%E5%91%A8/</id>
     <published>2025-08-17T07:27:09.000Z</published>
-    <updated>2025-08-17T07:30:10.361Z</updated>
+    <updated>2025-08-17T07:33:16.951Z</updated>
     
-    <content type="html"><![CDATA[<p>又是一周过去了。翼掌柜界面终于适配好了，换了界面主题，还好主题颜色写成了软编码的.json文件，以后有任何不满意的配色可以改。</p><p>刚刚起床做了一个梦</p>]]></content>
+    <content type="html"><![CDATA[<p>又是一周过去了。翼掌柜界面终于适配好了，换了界面主题，还好主题颜色写成了软编码的.json文件，以后有任何不满意的配色可以改。</p><p>学习了如何在一个服务器上部署服务。</p><hr><p>刚刚起床做了一个梦</p><p>做梦用魔法把一辆电车飞起来了</p><p>没有紧张刺激的冒险，只有一时兴起然后疯狂擦屁股。在社会上闹出了一堆事件后，最终它在两万米高空上成为了地球卫星……</p><p>昨晚也做了梦，梦见了不好的家庭，醒来的时候如释重负。</p><p>说真的，实习好累啊，多希望可以赶快回学校。但是高数又挂科了，也不是很想回学校。</p><p>E.N.D.</p>]]></content>
     
     
       
       
     <summary type="html">&lt;p&gt;又是一周过去了。翼掌柜界面终于适配好了，换了界面主题，还好主题颜色写成了软编码的.json文件，以后有任何不满意的配色可以改。&lt;/p&gt;
+&lt;p&gt;学习了如何在一个服务器上部署服务。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;刚刚起床做了一个梦&lt;/p&gt;
+&lt;p&gt;做梦用魔法把一辆电车飞起来了&lt;/p&gt;
 </summary>
       
     
@@ -43,6 +46,8 @@
     <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
     
     <category term="技术" scheme="https://attenna.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="梦" scheme="https://attenna.github.io/tags/%E6%A2%A6/"/>
     
   </entry>
   
