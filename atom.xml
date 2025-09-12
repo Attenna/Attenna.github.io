@@ -6,7 +6,7 @@
   <link href="https://attenna.github.io/atom.xml" rel="self"/>
   
   <link href="https://attenna.github.io/"/>
-  <updated>2025-09-06T03:57:26.201Z</updated>
+  <updated>2025-09-12T13:41:34.103Z</updated>
   <id>https://attenna.github.io/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>上网折腾记 1 </title>
+    <link href="https://attenna.github.io/2025/09/12/%E4%B8%8A%E7%BD%91%E6%8A%98%E8%85%BE%E8%AE%B0%201/"/>
+    <id>https://attenna.github.io/2025/09/12/%E4%B8%8A%E7%BD%91%E6%8A%98%E8%85%BE%E8%AE%B0%201/</id>
+    <published>2025-09-12T13:27:43.000Z</published>
+    <updated>2025-09-12T13:41:34.103Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>为了真正的自由！</p></blockquote><p><del>好吧这个有点中二，不过大体上是纯粹的校园网环境折腾。</del></p><p>本人最近买了个斐讯N1盒子，刷了openwrt固件的，本来是家里用来设置为旁路由科学上网用的，但是家里嫌它太费电，和我买的AP接入点一同拔掉了。<br>于是，就想拿来作为宿舍的旁路由，连接小米设备，作为科学上网物理硬件。本贴作为上网折腾记1，记录本次折腾的开头。</p><p>如何开始</p><p>我买了个屏幕，华硕的proart 279CRV。</p><p><del>我要微星，我要华硕，我要ROG</del> </p><p>显示器很贵，效果很好，我很喜欢，我很破产。<br>我把盒子连接上了屏幕，弹出了熟悉的Linux界面。<br>但是所有的Linux终端命令都忘光光了！<br>依稀记得root账号，启动了系统，又卡住了。</p><p>邮专的网络不提供有线网连接，没法使用网线<br>邮专的网络需要身份验证，验证方式也从早期的https请求，改为了需要验证浏览器cookie……<br>虽然有学长开发出了非图形化界面的脚本，但是怎么把它弄进电视盒子？<br>全是门槛。</p><p>今日就先到这里~<br>我还是研究研究罢（哭）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;为了真正的自由！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;del&gt;好吧这个有点中二，不过大体上是纯粹的校园网环境折腾。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;本人最近买了个斐讯N1盒子，刷了openwrt固件的，本来是家里用来设置为旁路由科学上网用的，但是</summary>
+      
+    
+    
+    
+    <category term="生活记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="学习记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="技术" scheme="https://attenna.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://attenna.github.io/2025/09/11/%E8%A1%A5%E8%80%83%E5%90%8E/"/>
+    <id>https://attenna.github.io/2025/09/11/%E8%A1%A5%E8%80%83%E5%90%8E/</id>
+    <published>2025-09-11T15:41:03.979Z</published>
+    <updated>2025-09-11T15:41:03.979Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>补考有感</title>
@@ -74,9 +117,9 @@
     <category term="实习记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
-    
     <category term="梦" scheme="https://attenna.github.io/tags/%E6%A2%A6/"/>
+    
+    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
     
     <category term="技术" scheme="https://attenna.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     

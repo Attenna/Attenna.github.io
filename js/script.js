@@ -25,6 +25,39 @@
     });
   });
 
+  // Theme (day/night) toggle
+  var THEME_KEY = 'theme-preference';
+  var $themeToggle = $('#theme-toggle');
+  function applyTheme(theme){
+    var root = document.documentElement || document.body;
+    if (theme === 'night'){
+      root.setAttribute('data-theme', 'night');
+      $themeToggle.find('span').removeClass('fa-moon').addClass('fa-sun');
+    } else {
+      root.removeAttribute('data-theme');
+      $themeToggle.find('span').removeClass('fa-sun').addClass('fa-moon');
+    }
+  }
+
+  // init from localStorage or prefers-color-scheme
+  try {
+    var saved = localStorage.getItem(THEME_KEY);
+    if (saved){
+      applyTheme(saved);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+      applyTheme('night');
+    }
+  } catch (e){}
+
+  $themeToggle.on('click', function(){
+    try {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'night' ? 'day' : 'night';
+      applyTheme(next === 'night' ? 'night' : 'day');
+      localStorage.setItem(THEME_KEY, next === 'night' ? 'night' : 'day');
+    } catch (e){}
+  });
+
   $('.search-form-input').on('blur', function(){
     startSearchAnim();
     $searchWrap.removeClass('on');
