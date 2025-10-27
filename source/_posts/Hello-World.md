@@ -4,6 +4,7 @@ date: 2025-08-01 01:40:27
 categories: Uncategorized
 tags:
   - 站点相关
+comments: true
 ---
 
 Welcome to WordPress! This is your first post. Edit or delete it to take the first step in your blogging journey.

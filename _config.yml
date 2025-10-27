@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 我的技术博客
-subtitle: '记录学习与成长的点点滴滴'
-description: '专注于技术分享、学习笔记和生活感悟的个人博客'
-keywords: 技术,编程,学习,博客
-author: 博主
+title: Attenna的博客站
+subtitle: '这里是互联网上，Attenna住的地方'
+description: '普通的个人博客'
+keywords: 技术,编程,学习,博客,生活,随笔,记录,分享
+author: Attenna
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -105,3 +105,11 @@ deploy:
   type: git
   repo: https://github.com/Attenna/attenna.github.io.git
   branch: main
+
+# Feed (RSS/Atom)
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content: true
