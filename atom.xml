@@ -6,7 +6,7 @@
   <link href="https://attenna.github.io/atom.xml" rel="self"/>
   
   <link href="https://attenna.github.io/"/>
-  <updated>2025-09-25T16:19:56.931Z</updated>
+  <updated>2025-09-12T13:41:34.103Z</updated>
   <id>https://attenna.github.io/</id>
   
   <author>
@@ -15,41 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>我是不是没有了心？</title>
-    <link href="https://attenna.github.io/2025/09/26/%E6%88%91%E6%98%AF%E4%B8%8D%E6%98%AF%E6%B2%A1%E6%9C%89%E4%BA%86%E5%BF%83%EF%BC%9F/"/>
-    <id>https://attenna.github.io/2025/09/26/%E6%88%91%E6%98%AF%E4%B8%8D%E6%98%AF%E6%B2%A1%E6%9C%89%E4%BA%86%E5%BF%83%EF%BC%9F/</id>
-    <published>2025-09-25T16:16:32.000Z</published>
-    <updated>2025-09-25T16:19:56.931Z</updated>
-    
-    <content type="html"><![CDATA[<p>我是不是没有了心？</p><p>人际关系到底该怎么维持？</p><p>亲密关系到底该怎样持续？</p><p>我是不是一直其实都不是人类？</p><p>我又让人伤心了，可是我本不应该让人们高兴吗？</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;我是不是没有了心？&lt;/p&gt;
-&lt;p&gt;人际关系到底该怎么维持？&lt;/p&gt;
-&lt;p&gt;亲密关系到底该怎样持续？&lt;/p&gt;
-&lt;p&gt;我是不是一直其实都不是人类？&lt;/p&gt;
-&lt;p&gt;我又让人伤心了，可是我本不应该让人们高兴吗？&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="生活记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="青春" scheme="https://attenna.github.io/tags/%E9%9D%92%E6%98%A5/"/>
-    
-    <category term="思考" scheme="https://attenna.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="情感" scheme="https://attenna.github.io/tags/%E6%83%85%E6%84%9F/"/>
-    
-    <category term="成长" scheme="https://attenna.github.io/tags/%E6%88%90%E9%95%BF/"/>
-    
-  </entry>
   
   <entry>
     <title>上网折腾记 1 </title>
@@ -139,9 +104,9 @@
     <category term="实习记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
-    
     <category term="技术" scheme="https://attenna.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
     
     <category term="梦" scheme="https://attenna.github.io/tags/%E6%A2%A6/"/>
     
@@ -319,9 +284,9 @@
     <category term="实习记录" scheme="https://attenna.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
-    
     <category term="技术" scheme="https://attenna.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
     
   </entry>
   
@@ -440,9 +405,9 @@
     
     <category term="思考" scheme="https://attenna.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
-    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
-    
     <category term="技术" scheme="https://attenna.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="职业" scheme="https://attenna.github.io/tags/%E8%81%8C%E4%B8%9A/"/>
     
   </entry>
   
