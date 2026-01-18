@@ -87,9 +87,84 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-上网折腾记 1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-web_test2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/09/12/%E4%B8%8A%E7%BD%91%E6%8A%98%E8%85%BE%E8%AE%B0%201/" class="article-date">
+    <a href="/2026/01/18/web_test2/" class="article-date">
+  <time class="dt-published" datetime="2026-01-18T02:43:43.000Z" itemprop="datePublished">2026-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a>►<a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/01/18/web_test2/">上网折腾记 2 </a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>为了更快的冲浪！</p>
+</blockquote>
+<p><del>其实只是为了 解决书房WiFi死角问题</del></p>
+<p>用OpenWrt，树莓派解决WiFi死角问题。</p>
+<p>最近搬家，家里的书房自然成为了我的快乐老家。但是家里人又不会组网，书房离宽带盒子间隔了三堵承重墙。不过万幸的是，书房还通了网线。看来施工是吃了上一次的前车之鉴了。</p>
+<p>那么说干就干，去组网吧？结果发现，本来想做分路由的垃圾Tenda没有电源适配器。电源适配器到货还得等两天。这怎么能满足本人的网上冲浪需求？本人大胆分析合理假设，翻出了自己电子垃圾里面的——树莓派4B。它正好有一个千兆有线网卡。跑家里的弱鸡百兆宽带绰绰有余</p>
+<p>进行一番互联网上的查找，对我最有用的两篇文章分别是知乎莫龙的矿物和demoli的个人博客。顺藤摸瓜查找到了合理的OpenWRT固件（直接抄作业）。委托同学在github上帮忙下载一下，刷入了镜像。</p>
+<p>本人不会ssh，于是直接跳步到插电连接默认的OpenWrt WiFi（此时千万不能插入网线）</p>
+<p>首先确认树莓派的上级网段，确认当前环境的上网设备，比如家庭路由器或者实验室的路由器等，进入其设置界面，查看其局域网网段，并查看网段中已经占用的IP，之后任意选择一个未占用的IP（网段IP以 <code>192.168.3.1</code>为例，假设IP <code>192.168.3.250</code>未被占用）。我选择了打开家里华为父路由的后台进行检查，直接在浏览器中输入了对应的ip地址。</p>
+<p>之后在web控制面板内自带的终端进行了更改，等待重启后再输入一遍新的ip地址就行了。</p>
+<p>固定好ip地址后，进入路由器设置界面，进入控制面板后，在 “⽹络 - 接⼝ - Lan - 修改” 中进⾏以下设置：</p>
+<p><img src="/2026/01/18/web_test2/1460000041764245.webp" alt="OpenWrt设置界面1" title="OpenWrt设置界面1"></p>
+<p><img src="/2026/01/18/web_test2/1768704843505.png" alt="OpenWrt设置界面2" title="OpenWrt设置界面2"></p>
+<p>按照上述参数填写完毕后，点击保存&amp;应用</p>
+<p>树莓派断电，使用网线连接家庭路由器或者实验室路由器的LAN 口到树莓派的网口（ <strong>在此之前，树莓派不应该使用网线连接到路由器</strong> ），树莓派上电</p>
+<p>等待开启稳定后，尝试连接OpenWrt WiFi，发现可以上网了</p>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000039262209">raspberry-pi - 树莓派4B安装OpenWrt - 个人文章 - SegmentFault 思否</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/451788328">树莓派4B刷OpenWrt做路由器的经验+踩坑 - 知乎</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SuLingGG/OpenWrt-Rpi">SuLingGG&#x2F;OpenWrt-Rpi: Raspberry Pi &amp; NanoPi R2S&#x2F;R4S &amp; G-Dock &amp; x86 OpenWrt Compile Project. (Based on Github Action &#x2F; Daily Update)</a></p>
+
+      
+    </div>
+
+    <!-- 标签 + 分享 横向容器 -->
+    <footer class="article-footer">
+      <div class="article-tags-share">
+        <div class="article-tags-wrap">
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+        </div>
+        <a data-url="https://attenna.github.io/2026/01/18/web_test2/" data-id="cmkj67m540008t8kt61jd9ttl" data-title="上网折腾记 2 " class="article-share-link" title="分享">
+          <span class="fa fa-share"></span>
+          <span class="action-text">分享</span>
+        </a>
+      </div>
+    </footer>
+
+    <!-- 评论区：位于标签下、上一篇/下一篇上方 -->
+    
+    
+    
+
+    
+  </div>
+</article>
+  
+    <article id="post-web_test1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/12/web_test1/" class="article-date">
   <time class="dt-published" datetime="2025-09-12T13:27:43.000Z" itemprop="datePublished">2025-09-12</time>
 </a>
     
@@ -105,7 +180,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/12/%E4%B8%8A%E7%BD%91%E6%8A%98%E8%85%BE%E8%AE%B0%201/">上网折腾记 1 </a>
+      <a class="p-name article-title" href="/2025/09/12/web_test1/">上网折腾记 1 </a>
     </h1>
   
 
@@ -136,7 +211,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/09/12/%E4%B8%8A%E7%BD%91%E6%8A%98%E8%85%BE%E8%AE%B0%201/" data-id="cmh8lvz1v0007k0kt9tbgh7gw" data-title="上网折腾记 1 " class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/09/12/web_test1/" data-id="cmkj67m540007t8kt1b9z3p1r" data-title="上网折腾记 1 " class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -199,7 +274,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%92%E6%98%A5/" rel="tag">青春</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/09/06/%E8%A1%A5%E8%80%83%E6%9C%89%E6%84%9F/" data-id="cmh8lvz22000vk0kt12jxbx4v" data-title="补考有感" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/09/06/%E8%A1%A5%E8%80%83%E6%9C%89%E6%84%9F/" data-id="cmkj67m5c000xt8kt7nnj5aqg" data-title="补考有感" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -268,7 +343,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A2%A6/" rel="tag">梦</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A/" rel="tag">职业</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/08/17/%E5%8F%88%E6%98%AF%E4%B8%80%E5%91%A8/" data-id="cmh8lvz1x000bk0kt44uocjgk" data-title="又是一周" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/08/17/%E5%8F%88%E6%98%AF%E4%B8%80%E5%91%A8/" data-id="cmkj67m56000dt8kt18n095fw" data-title="又是一周" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -400,7 +475,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0/" rel="tag">实习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A/" rel="tag">职业</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/08/08/%E5%AE%9E%E4%B9%A0%E4%B8%A4%E6%98%9F%E6%9C%9F%E6%88%91%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88/" data-id="cmh8lvz1x000ck0ktdi2z3yrp" data-title="实习两星期我干了什么" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/08/08/%E5%AE%9E%E4%B9%A0%E4%B8%A4%E6%98%9F%E6%9C%9F%E6%88%91%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88/" data-id="cmkj67m58000ht8kt5v1xezxv" data-title="实习两星期我干了什么" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -456,7 +531,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/08/07/school-celebration/" data-id="cmh8lvz1u0006k0kt8hrv7yis" data-title="不是我的校庆" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/08/07/school-celebration/" data-id="cmkj67m530006t8kt6bs76muc" data-title="不是我的校庆" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -514,7 +589,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%BA%E7%89%A9/" rel="tag">人物</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E5%BF%86/" rel="tag">回忆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%92%E6%98%A5/" rel="tag">青春</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/08/05/art_by_xiaozhao/" data-id="cmh8lvz1p0001k0kt2vqccphd" data-title="全家福 · 北邮小动物群 2025 夏" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/08/05/art_by_xiaozhao/" data-id="cmkj67m500003t8kt313iay08" data-title="全家福 · 北邮小动物群 2025 夏" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -576,7 +651,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A/" rel="tag">职业</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/08/02/%E6%97%B6%E8%96%AA-%E5%B7%A5%E6%97%B6/" data-id="cmh8lvz1z000gk0kt1k9o86as" data-title="工时 时薪" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/08/02/%E6%97%B6%E8%96%AA-%E5%B7%A5%E6%97%B6/" data-id="cmkj67m5a000mt8kt14ip2kiq" data-title="工时 时薪" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -756,7 +831,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%BA%E7%89%A9/" rel="tag">人物</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E5%BF%86/" rel="tag">回忆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%92%E6%98%A5/" rel="tag">青春</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/08/01/%E9%BB%84%E9%87%91-%E9%BB%84%E9%87%91/" data-id="cmh8lvz2b002jk0ktah2zcode" data-title="黄金 黄金" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/08/01/%E9%BB%84%E9%87%91-%E9%BB%84%E9%87%91/" data-id="cmkj67m5j002rt8ktfvnh5zfu" data-title="黄金 黄金" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -1038,65 +1113,7 @@ def endpoint():
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A/" rel="tag">职业</a></li></ul>
 
         </div>
-        <a data-url="https://attenna.github.io/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/" data-id="cmh8lvz22000sk0kt26ovesvo" data-title="翼掌柜图像编辑页面的思路" class="article-share-link" title="分享">
-          <span class="fa fa-share"></span>
-          <span class="action-text">分享</span>
-        </a>
-      </div>
-    </footer>
-
-    <!-- 评论区：位于标签下、上一篇/下一篇上方 -->
-    
-    
-    
-
-    
-  </div>
-</article>
-  
-    <article id="post-Hello-World" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/01/Hello-World/" class="article-date">
-  <time class="dt-published" datetime="2025-07-31T17:40:27.000Z" itemprop="datePublished">2025-08-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Uncategorized/">Uncategorized</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/01/Hello-World/">Hello World!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to WordPress! This is your first post. Edit or delete it to take the first step in your blogging journey.</p>
-<p>建站记录。这个网站，在这一刻建立了。</p>
-<p>希望这个博客站能越办越好吧！</p>
-<p>2025-08-01 于上海</p>
-
-      
-    </div>
-
-    <!-- 标签 + 分享 横向容器 -->
-    <footer class="article-footer">
-      <div class="article-tags-share">
-        <div class="article-tags-wrap">
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AB%99%E7%82%B9%E7%9B%B8%E5%85%B3/" rel="tag">站点相关</a></li></ul>
-
-        </div>
-        <a data-url="https://attenna.github.io/2025/08/01/Hello-World/" data-id="cmh8lvz1s0003k0kt6apvg80u" data-title="Hello World!" class="article-share-link" title="分享">
+        <a data-url="https://attenna.github.io/2025/08/01/%E7%BF%BC%E6%8E%8C%E6%9F%9C%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%80%9D%E8%B7%AF/" data-id="cmkj67m5b000rt8ktdz61g5d4" data-title="翼掌柜图像编辑页面的思路" class="article-share-link" title="分享">
           <span class="fa fa-share"></span>
           <span class="action-text">分享</span>
         </a>
@@ -1147,7 +1164,7 @@ def endpoint():
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E4%BA%BA%E7%89%A9/" style="font-size: 15px;">人物</a> <a href="/tags/%E5%9B%9E%E5%BF%86/" style="font-size: 17.5px;">回忆</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 17.5px;">思考</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 17.5px;">技术</a> <a href="/tags/%E6%A2%A6/" style="font-size: 12.5px;">梦</a> <a href="/tags/%E7%AB%99%E7%82%B9%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">站点相关</a> <a href="/tags/%E8%81%8C%E4%B8%9A/" style="font-size: 20px;">职业</a> <a href="/tags/%E9%9D%92%E6%98%A5/" style="font-size: 17.5px;">青春</a>
+      <a href="/tags/%E4%BA%BA%E7%89%A9/" style="font-size: 14px;">人物</a> <a href="/tags/%E5%9B%9E%E5%BF%86/" style="font-size: 16px;">回忆</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 16px;">思考</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 18px;">技术</a> <a href="/tags/%E6%A2%A6/" style="font-size: 12px;">梦</a> <a href="/tags/%E7%AB%99%E7%82%B9%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">站点相关</a> <a href="/tags/%E8%81%8C%E4%B8%9A/" style="font-size: 20px;">职业</a> <a href="/tags/%E9%9D%92%E6%98%A5/" style="font-size: 16px;">青春</a>
     </div>
   </div>
 
@@ -1156,7 +1173,7 @@ def endpoint():
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">九月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">八月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">九月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">八月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a></li></ul>
     </div>
   </div>
 
@@ -1169,7 +1186,11 @@ def endpoint():
       <ul>
         
           <li>
-            <a href="/2025/09/12/%E4%B8%8A%E7%BD%91%E6%8A%98%E8%85%BE%E8%AE%B0%201/">上网折腾记 1 </a>
+            <a href="/2026/01/18/web_test2/">上网折腾记 2 </a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/12/web_test1/">上网折腾记 1 </a>
           </li>
         
           <li>
@@ -1182,10 +1203,6 @@ def endpoint():
         
           <li>
             <a href="/2025/08/08/%E5%AE%9E%E4%B9%A0%E4%B8%A4%E6%98%9F%E6%9C%9F%E6%88%91%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88/">实习两星期我干了什么</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/07/school-celebration/">不是我的校庆</a>
           </li>
         
       </ul>
@@ -1201,7 +1218,7 @@ def endpoint():
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2025 Attenna<br>
+      &copy; 2026 Attenna<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
       <a href="mailto:george_5298@outlook.com" class="footer-email-link">
         <span class="fa fa-envelope"></span> 给我发邮件
