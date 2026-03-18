@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: inside
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -113,3 +113,7 @@ feed:
   limit: 20
   hub:
   content: true
+
+# Sitemap
+sitemap:
+  path: sitemap.xml
