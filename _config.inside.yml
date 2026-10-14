@@ -110,6 +110,7 @@ profile:
 # Sidebar navigation links
 menu:
   Home: /
+  Categories: /categories
   About: /about
   Biography: /biography
   # Links: /links
@@ -298,3 +299,45 @@ copyright:
 
   # Custom text, override above settings
   # custom: my copyright
+
+# Comment system: Remarkbox (https://remarkbox.com)
+plugins:
+  - position: comments
+    template: |
+      <div id="remarkbox-div"></div>
+      <script>
+      (function () {
+        var div = document.getElementById("remarkbox-div");
+        if (!div || div.hasAttribute("data-rb-ready")) return;
+        div.setAttribute("data-rb-ready", "1");
+        var fragment = window.location.hash || "";
+        var src = "https://my.remarkbox.com/embed" +
+          "?rb_owner_key=05f74c7b-c7bb-11f1-a6c0-040140774501" +
+          "&thread_title=" + encodeURI(window.document.title) +
+          "&thread_uri=" + encodeURIComponent(window.location.href) +
+          "&mode=light" + fragment;
+        var ifrm = document.createElement("iframe");
+        ifrm.setAttribute("id", "remarkbox-iframe");
+        ifrm.setAttribute("scrolling", "no");
+        ifrm.setAttribute("frameborder", "0");
+        ifrm.setAttribute("tabindex", "0");
+        ifrm.setAttribute("title", "Remarkbox");
+        ifrm.style.width = "100%";
+        ifrm.style.height = "600px";
+        ifrm.src = src;
+        div.appendChild(ifrm);
+        function resize() {
+          if (typeof iFrameResize !== "function") return;
+          iFrameResize({
+            checkOrigin: ["https://my.remarkbox.com"],
+            inPageLinks: true,
+            initCallback: function (e) { e.iFrameResizer.moveToAnchor(fragment); }
+          }, ifrm);
+        }
+        if (typeof iFrameResize === "function") { resize(); return; }
+        var s = document.createElement("script");
+        s.src = "https://my.remarkbox.com/static/js/iframe-resizer/iframeResizer.min.js";
+        s.onload = resize;
+        document.body.appendChild(s);
+      })();
+      </script>

@@ -1,7 +1,7 @@
 ---
 title: "Hello World!"
 date: 2025-08-01 01:40:27
-categories: Uncategorized
+categories: 生活记录
 tags:
   - 站点相关
 comments: true
