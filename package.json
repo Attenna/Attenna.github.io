@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "hexo-site",
   "version": "1.0.0",
   "private": true,
@@ -14,7 +14,7 @@
   "dependencies": {
     "chalk": "^5.6.2",
     "hexo": "^7.0.0",
-    "hexo-asset-image-for-hexo5": "^2.1.7",
+    "hexo-asset-image-for-hexo5": "file:tools/hexo-asset-image-for-hexo5",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
