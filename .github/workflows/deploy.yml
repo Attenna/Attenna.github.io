@@ -2,9 +2,9 @@ name: Deploy Hexo to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ source ]
   pull_request:
-    branches: [ main ]
+    branches: [ source ]
 
 jobs:
   build-and-deploy:
